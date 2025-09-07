@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>home</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<header class="header">
+   <section class="flex">
+    
+      <a href="home.html" class="logo">
+         <img src="images/risers.jpg" alt="Risers Edu Logo" style="border-radius: 8px;">
+      </a>
+
+      <form action="search.html" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+         <a href="#" onclick="logout()" class="option-btn">logout</a>
+      </div>
+
+      <div class="profile">
+         <img id="headerProfilePic" src="images/pic-1.jpg" class="image" alt="">
+         <h3 id="headerProfileName" class="name">Ayush Kumar</h3>
+         <p id="headerProfileEmail" class="role">student</p>
+         <a href="profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">login</a>
+            <a href="register.html" class="option-btn">register</a>
+         </div>
+      </div>
+
+   </section>
+</header>   
+
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+
+   <div class="profile">
+      <img src="images/pic-1.jpg" class="image" alt="">
+      <h3 id="profileName" style="color: rgb(206, 130, 15); font-size: 20px;">Guest</h3>
+      
+      <p class="role">student</p>
+      <a href="profile.html" class="btn">view profile</a>
+   </div>
+   <!-- <div class="profile">
+      <img id="profilePic" src="" width="80">
+      <h3 id="profileName">Guest</h3>
+      <p id="profileEmail"></p>
+      <button onclick="logout()">Logout</button>
+   </div> -->
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>home</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>about</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>courses</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>teachers</span></a>
+      <a href="doubt.html"><i class="fas fa-lightbulb"></i><span>ask doubt</span></a>
+      <a href="my-doubts.html"><i class="fa-solid fa-comment-dots"></i></i><span>my doubt</span></a>
+      <a href="contact.html"><i class="fas fa-headset"></i><span>contact us</span></a>
+   </nav>
+</div>
+
+<section class="home-grid">
+   <h1 class="heading">quick options</h1>
+   <div class="box-container ">
+      <div class="box">
+         <h3 class="title">likes and comments</h3>
+         <p class="likes">total likes : <span>6783</span></p>
+         <a href="#" class="inline-btn " style="cursor: none;">likes</a>
+         <p class="likes">total comments : <span>1223</span></p>
+         <a href="#" class="inline-btn">comments</a>
+         <p class="likes">saved playlists : <span>6</span></p>
+         <a href="#" class="inline-btn">playlists</a>
+      </div>
+
+      <div class="box">
+         <h3 class="title">top categories</h3>
+         <div class="flex">
+            <a href="#"><i class="fa-solid fa-a"></i><span>English</span></a>
+            <a href="#"><i class="fa-solid fa-arrow-up-1-9"></i><span>Math</span></a>
+            <a href="#"><i class="fa-solid fa-om"></i><span>Hindi</span></a>
+            <a href="#"><i class="fa-solid fa-khanda"></i><span>Punjabi</span></a>
+           
+            <a href="#"><i class="fa-solid fa-atom"></i><span>Physics</span></a>
+            <a href="#"><i class="fa-solid fa-flask-vial"></i><span>Chemistry</span></a>
+         </div>
+      </div>
+
+      <div class="box">
+         <h3 class="title">popular topics</h3>
+         <div class="flex">
+            <a href="#"><i class="fa-solid fa-arrow-up-1-9"></i><span>Integration</span></a>
+            <a href="#"><i class="fa-solid fa-atom"></i><span>Quantum</span></a>
+            <a href="#"><i class="fa-solid fa-a"></i><span>Grammar</span></a>
+            <a href="#"><i class="fa-solid fa-flask-vial"></i><span>Thermodynamics</span></a>
+         </div>
+      </div>
+   </div>
+</section>
+
+<section class="courses">
+   <h1 class="heading">our courses</h1>
+   <div class="box-container radius">
+
+      <div class="box">
+         <div class="tutor">
+            <img src="images/pic-2.jpg" alt="">
+            <div class="info">
+               <h3>Himanshi</h3>
+               <span>21-10-2025</span>
+            </div>
+         </div>
+         <div class="thumb">
+            <img src="images/download.jpeg" alt="">
+            <span>2 videos</span>
+         </div>
+         <h3 class="title">Complete Hindi course</h3>
+      </div>
+
+      <div class="box">
+         <div class="tutor">
+            <img src="images/pic-3.jpg" alt="">
+            <div class="info">
+               <h3>Jogendra</h3>
+               <span>21-10-2025</span>
+            </div>
+         </div>
+         <div class="thumb">
+            <img src="images/englsih 2.webp" alt="">
+            <span>2 videos</span>
+         </div>
+         <h3 class="title">Complete English course</h3>
+      </div>
+
+      <div class="box">
+         <div class="tutor">
+            <img src="images/pic-4.jpg" alt="">
+            <div class="info">
+               <h3>Mukesh</h3>
+               <span>21-10-2025</span>
+            </div>
+         </div>
+         <div class="thumb">
+            <img src="images/Math.jpg" alt="">
+            <span>2 videos</span>
+         </div>
+         <h3 class="title">Complete Math course</h3>
+      </div>
+   </div>
+
+   <div class="more-btn" style="margin-bottom: 30px;">
+      <a href="courses.html" class="inline-option-btn">view all courses</a>
+   </div>
+</section>
+
+<footer class="footer">
+   &copy; copyright @ 2025 by <span>Gov.Of Punjab</span> | all rights reserved!
+</footer>
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+<!-- 👇 user data load script -->
+
+
+</body>
+</html>

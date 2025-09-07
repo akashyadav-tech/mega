@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Doubts</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+       :root {
+   --main-color: #4e2a84;   /* deep purple */
+   --red: #e74c3c;
+   --orange: #f59e0b;       /* golden-orange */
+   --light-color: #6b6b6b;  /* softer gray for text */
+   --light-bg: #f3e9e2;     /* soft beige background */
+   --black: #1f1f1f;        /* strong dark */
+   --white: #ffffff;        /* clean white */
+   --border: .1rem solid rgba(0,0,0,.1);
+}
+
+     body {
+        background: var(--light-bg);
+        color: var(--black);
+        transition: .3s ease;
+     }
+
+     /* ---- Dark Mode ---- */
+   body.dark {
+   --light-color: #aaa;
+   --light-bg:rgba(128, 128, 128, 0.323) ;  /* softer dark for containers */
+   --black: #fff;
+   --white: #222;
+   --border: .1rem solid rgba(255,255,255,.2);
+
+   /* Use gradient for background just like login page */
+   background: linear-gradient(to bottom right, #2c2c2c, #111);
+     background: linear-gradient(45deg, rgba(0, 0, 0, 0.85) 0 60%, grey 100%);
+}
+
+    .wrap{max-width:900px;margin:5rem auto;padding:2rem}
+    .heading{font-size:3rem;color:var(--main-color);margin-bottom:1.5rem}
+    .tools{display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+    .search{flex:1;min-width:220px}
+    .list{display:grid;grid-template-columns:1fr;gap:1rem}
+    .card{background:var(--white);border:var(--border);border-radius:12px;padding:1rem 1.25rem}
+    .card .top{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:.5rem}
+    .meta{font-size:.95rem;opacity:.8}
+    .status{padding:.25rem .6rem;border-radius:999px;font-size:.85rem;border:var(--border);text-transform:capitalize}
+    .status.open{background:#fff7ed}
+    .status.resolved{background:#ecfdf5}
+    .msg{margin:.5rem 0 1rem;line-height:1.5}
+    .actions{display:flex;gap:.5rem;flex-wrap:wrap}
+    .btn-sm{display:inline-flex;align-items:center;gap:.5rem;border:var(--border);border-radius:8px;padding:.5rem .75rem;background:var(--light-bg);cursor:pointer}
+    .empty{background:var(--white);border:var(--border);border-radius:12px;padding:2rem;text-align:center}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <section class="flex">
+      <a href="home.html" class="logo">
+        <img src="images/risers.jpg" alt="Risers Edu Logo" style="border-radius:8px;">
+      </a>
+      <form action="search.html" method="post" class="search-form">
+        <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+        <button type="submit" class="fas fa-search"></button>
+      </form>
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+        <a href="#" onclick="logout()" class="option-btn">logout</a>
+      </div>
+     <div class="profile">
+         <img id="headerProfilePic" src="images/pic-1.jpg" class="image" alt="">
+         <h3 id="headerProfileName" class="name">Ayush Kumar</h3>
+         <p id="headerProfileEmail" class="role">student</p>
+         <a href="profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">login</a>
+            <a href="register.html" class="option-btn">register</a>
+         </div>
+      </div>
+    </section>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="side-bar">
+    <div id="close-btn"><i class="fas fa-times"></i></div>
+  
+   <div class="profile">
+      <img src="images/pic-1.jpg" class="image" alt="">
+      <h3 id="profileName" style="color: rgb(206, 130, 15);font-size: 20px;">Guest</h3>
+      
+      <p class="role">student</p>
+      <a href="profile.html" class="btn">view profile</a>
+   </div>
+    <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>home</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>about</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>courses</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>teachers</span></a>
+      <a href="doubt.html"><i class="fas fa-lightbulb"></i><span>ask doubt</span></a>
+      <a href="my-doubts.html"><i class="fas fa-list"></i><span>my doubts</span></a>
+      <a href="contact.html"><i class="fas fa-headset"></i><span>contact us</span></a>
+    </nav>
+  </div>
+
+  <main class="wrap">
+    <h1 class="heading">My Doubts</h1>
+    <div class="tools">
+      <input id="q" class="box search" placeholder="Search by text/email/name...">
+      <select id="filter" class="box" style="width:180px">
+        <option value="all">All</option>
+        <option value="open">Open</option>
+        <option value="resolved">Resolved</option>
+      </select>
+    </div>
+    <div id="list" class="list"></div>
+    <div class="more-btn" style="margin-top:1.5rem">
+      <a href="doubt.html" class="option-btn"><i class="fas fa-plus"></i> Add new doubt</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    &copy; copyright @ 2025 by <span>Gov.Of Punjab</span> | all rights reserved!
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+  <script>
+    // ---- Local Doubts API ----
+    const DoubtsAPI = {
+      getDoubts(){
+        return JSON.parse(localStorage.getItem("doubts")||"[]");
+      },
+      saveDoubts(list){
+        localStorage.setItem("doubts",JSON.stringify(list));
+      },
+      deleteDoubt(id){
+        let list=this.getDoubts().filter(d=>d.id!=id);
+        this.saveDoubts(list);
+      },
+      toggleResolved(id){
+        let list=this.getDoubts().map(d=>{
+          if(d.id==id){ d.status=d.status==="resolved"?"open":"resolved"; }
+          return d;
+        });
+        this.saveDoubts(list);
+      },
+      formatDate(dt){
+        return new Date(dt).toLocaleString();
+      }
+    };
+
+    // ---- Theme Toggle ----
+    (()=>{ 
+      const THEME_KEY="theme";
+      function applyTheme(){
+        const saved=localStorage.getItem(THEME_KEY)||"light";
+        const body=document.body;
+        const btn=document.getElementById("toggle-btn");
+        if(saved==="dark"){ body.classList.add("dark"); btn.classList.replace("fa-sun","fa-moon"); }
+        else{ body.classList.remove("dark"); btn.classList.replace("fa-moon","fa-sun"); }
+        btn.onclick=()=>{
+          body.classList.toggle("dark");
+          const isDark=body.classList.contains("dark");
+          localStorage.setItem(THEME_KEY,isDark?"dark":"light");
+          btn.classList.toggle("fa-sun",!isDark);
+          btn.classList.toggle("fa-moon",isDark);
+        };
+      }
+      document.addEventListener("DOMContentLoaded",applyTheme);
+    })();
+
+    // ---- Doubt List Render ----
+    const listEl=document.getElementById("list");
+    const qEl=document.getElementById("q");
+    const filterEl=document.getElementById("filter");
+
+    function render(){
+      const q=(qEl.value||"").toLowerCase();
+      const status=filterEl.value;
+      const doubts=DoubtsAPI.getDoubts().filter(d=>{
+        const text=(d.name+" "+d.email+" "+d.message).toLowerCase();
+        return text.includes(q)&&(status==="all"||d.status===status);
+      });
+
+      listEl.innerHTML="";
+      if(!doubts.length){
+        listEl.innerHTML=`<div class="empty"><p>No doubts yet.</p>
+        <p style="margin-top:.5rem"><a class="inline-option-btn" href="doubt.html">
+        <i class="fas fa-plus"></i> Add your first doubt</a></p></div>`;
+        return;
+      }
+      doubts.forEach(d=>{
+        const card=document.createElement("div");
+        card.className="card";
+        card.innerHTML=`
+          <div class="top">
+            <div>
+              <strong>${escapeHTML(d.name)}</strong>
+              <div class="meta">${escapeHTML(d.email)} • ${DoubtsAPI.formatDate(d.createdAt)}</div>
+            </div>
+            <span class="status ${d.status}">${d.status}</span>
+          </div>
+          <div class="msg">${escapeHTML(d.message)}</div>
+          <div class="actions">
+            <button class="btn-sm" data-action="toggle" data-id="${d.id}">
+              <i class="fa-solid ${d.status==='resolved'?'fa-rotate-left':'fa-check'}"></i>
+              ${d.status==='resolved'?'Mark Open':'Mark Resolved'}
+            </button>
+            <button class="btn-sm" data-action="delete" data-id="${d.id}">
+              <i class="fa-solid fa-trash"></i> Delete
+            </button>
+          </div>`;
+        listEl.appendChild(card);
+      });
+    }
+
+    function escapeHTML(s){
+      return (s||"").replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    }
+
+    listEl.addEventListener("click",e=>{
+      const btn=e.target.closest("button[data-action]");
+      if(!btn)return;
+      const id=btn.getAttribute("data-id");
+      const action=btn.getAttribute("data-action");
+      if(action==="delete"){ if(confirm("Delete this doubt?")) DoubtsAPI.deleteDoubt(id); }
+      else if(action==="toggle"){ DoubtsAPI.toggleResolved(id); }
+      render();
+    });
+
+    qEl.addEventListener("input",render);
+    filterEl.addEventListener("change",render);
+    document.addEventListener("DOMContentLoaded",render);
+  </script>
+</body>
+</html>

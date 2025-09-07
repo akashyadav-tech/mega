@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Contact Us</title>
+
+   <!-- font awesome cdn link -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link -->
+   <link rel="stylesheet" href="css/style.css">
+
+   <style>
+      
+  /* Light Theme */
+      :root {
+         --main-color: #4e2a84;
+         --red: #e74c3c;
+         --orange: #f59e0b;
+         --light-color: #6b6b6b;
+         --light-bg: #f3e9e2;
+         --black: #1f1f1f;
+         --white: #ffffff;
+         --border: .1rem solid rgba(0,0,0,.1);
+      }
+
+      body {
+         background: var(--light-bg);
+         color: var(--black);
+         transition: .3s ease;
+      }
+
+      /* Dark Theme */
+      body.dark {
+         --light-color: #aaa;
+         --light-bg: rgba(128, 128, 128, 0.323);
+         --black: #fff;
+         --white: #222;
+         --border: .1rem solid rgba(255,255,255,.2);
+         background: linear-gradient(45deg, rgba(0, 0, 0, 0.85) 0 60%, grey 100%);
+      }
+
+      .contact {
+         padding: 3rem;
+      }
+
+      .contact .row {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 2rem;
+         align-items: center;
+         justify-content: center;
+      }
+
+      .contact .row .image img {
+         max-width: 100%;
+         height: auto;
+      }
+
+      .contact .row form {
+         flex: 1 1 40rem;
+         background: var(--white);
+         border-radius: 1rem;
+         padding: 2rem;
+         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+         transition: background 0.3s, color 0.3s;
+      }
+
+      .contact .row form h3 {
+         font-size: 2.5rem;
+         color: var(--main-color);
+         margin-bottom: 1.5rem;
+      }
+
+      .contact .row form .box {
+         width: 100%;
+         padding: 1.2rem;
+         margin: 0.8rem 0;
+         border-radius: .5rem;
+         border: var(--border);
+         background: var(--light-bg);
+         color: var(--black);
+         font-size: 1.6rem;
+         transition: background 0.3s, color 0.3s;
+      }
+
+      .contact .row form .inline-btn {
+         background: var(--main-color);
+         color: #fff;
+         padding: 1rem 2rem;
+         border-radius: .5rem;
+         cursor: pointer;
+         font-size: 1.6rem;
+         font-weight: 600;
+         transition: 0.3s;
+      }
+
+      .contact .row form .inline-btn:hover {
+         background: #3b1f6a;
+      }
+
+      .contact .box-container {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+         gap: 2rem;
+         margin-top: 3rem;
+      }
+
+      .contact .box-container .box {
+         background: var(--white);
+         border: var(--border);
+         border-radius: 1rem;
+         text-align: center;
+         padding: 2rem;
+         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+         transition: background 0.3s, color 0.3s;
+      }
+
+      .contact .box-container .box i {
+         font-size: 3rem;
+         color: var(--main-color);
+         margin-bottom: 1rem;
+      }
+
+      .contact .box-container .box h3 {
+         font-size: 2rem;
+         margin: 1rem 0;
+         color: var(--black);
+      }
+
+      .contact .box-container .box a {
+         display: block;
+         color: var(--main-color);
+         margin: 0.3rem 0;
+         font-size: 1.4rem;
+      }
+
+      .footer {
+         text-align: center;
+         padding: 2rem;
+         margin-top: 3rem;
+         background: var(--white);
+         border-top: var(--border);
+         transition: background 0.3s, color 0.3s;
+      }
+      /* Popup Fullscreen */
+.popup {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background: rgba(0,0,0,0.8);
+   color: #fff;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 2rem;
+   font-weight: bold;
+   z-index: 2000;
+   opacity: 0;
+   pointer-events: none;
+   transition: opacity 0.3s ease;
+}
+.popup.active {
+   opacity: 1;
+   pointer-events: auto;
+}
+
+
+      /* Popup */
+      /* .popup {
+         position: fixed;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         background: var(--white);
+         color: var(--black);
+         padding: 2rem;
+         border-radius: 1rem;
+         box-shadow: 0 4px 15px rgba(0,0,0,.2);
+         display: none;
+         z-index: 1000;
+         text-align: center;
+      }
+      .popup.active { display: block; } */
+   </style>
+</head>
+<body>
+
+<header class="header">
+   <section class="flex">
+      <a href="home.html" class="logo">
+         <img src="images/risers.jpg" alt="Risers Edu Logo" style="border-radius: 8px;">
+      </a>
+      <form action="search.html" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+         <a href="#" onclick="logout()" class="option-btn">logout</a>
+      </div>
+
+      <div class="profile">
+         <img id="headerProfilePic" src="images/pic-1.jpg" class="image" alt="">
+         <h3 id="headerProfileName" class="name">Guest</h3>
+         <p id="headerProfileEmail" class="role">student</p>
+         <a href="profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">login</a>
+            <a href="register.html" class="option-btn">register</a>
+         </div>
+      </div>
+   </section>
+</header>   
+
+<!-- Sidebar -->
+<div class="side-bar">
+   <div id="close-btn"><i class="fas fa-times"></i></div>
+  
+   <div class="profile">
+      <img src="images/pic-1.jpg" class="image" alt="">
+      <h3 id="profileName" style="color: rgb(206, 130, 15); font-size: 20px;">Guest</h3>
+      
+      <p class="role">student</p>
+      <a href="profile.html" class="btn">view profile</a>
+   </div>
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>home</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>about</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>courses</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>teachers</span></a>
+      <a href="doubt.html"><i class="fas fa-lightbulb"></i><span>ask doubt</span></a>
+      <a href="my-doubts.html"><i class="fa-solid fa-comment-dots"></i><span>my doubt</span></a>
+      <a href="contact.html"><i class="fas fa-headset"></i><span>contact us</span></a>
+   </nav>
+</div>
+
+<!-- Contact Form -->
+<section class="contact">
+   <div class="row">
+      <div class="image">
+         <img src="images/contact-img.svg" alt="">
+      </div>
+
+      <form id="contactForm">
+         <h3>Connect Us</h3>
+         <input type="text" placeholder="enter your name" name="name" required maxlength="50" class="box">
+         <input type="email" placeholder="enter your email" name="email" required maxlength="50" class="box">
+         <input type="number" placeholder="enter your number" name="number" required maxlength="50" class="box">
+         <textarea name="msg" class="box" placeholder="enter your message" required maxlength="1000" cols="30" rows="10"></textarea>
+         <input type="submit" value="send message" class="inline-btn">
+      </form>
+   </div>
+
+   <div class="box-container" style="margin-bottom: 45px;">
+      <div class="box">
+         <i class="fas fa-phone"></i>
+         <h3>phone number</h3>
+         <a href="tel:1234567890">123-456-7890</a>
+         <a href="tel:1112223333">111-222-3333</a>
+      </div>
+      
+      <div class="box">
+         <i class="fas fa-envelope"></i>
+         <h3>email address</h3>
+         <a href="mailto:Ayush@gmail.com">Ayush@gmail.com</a>
+         <a href="mailto:Akash@gmail.com">Akash@gmail.com</a>
+      </div>
+
+      <div class="box">
+         <i class="fas fa-map-marker-alt"></i>
+         <h3>office address</h3>
+         <a href="#">Jagat Farm, Gauttam Buddha Nagar</a>
+      </div>
+   </div>
+</section>
+
+<!-- Popup -->
+ <!-- Popup -->
+<div class="popup" id="popup">✅ Message sent successfully to Risers Edu!</div>
+
+<!-- <div class="popup" id="popup">✅ Your message has been sent!</div> -->
+
+<footer class="footer">
+   &copy; copyright @ 2025 by <span>Gov.Of Punjab</span> | all rights reserved!
+</footer>
+
+<script>
+(() => {
+   const THEME_KEY = "theme";
+
+   // ---------- THEME ----------
+   const body = document.body;
+   const toggleBtn = document.getElementById("toggle-btn");
+
+   function applySavedTheme() {
+      const saved = localStorage.getItem(THEME_KEY) || "light";
+      if (saved === "dark") {
+         body.classList.add("dark");
+         toggleBtn.classList.replace("fa-sun","fa-moon");
+      } else {
+         body.classList.remove("dark");
+         toggleBtn.classList.replace("fa-moon","fa-sun");
+      }
+   }
+
+   toggleBtn.onclick = () => {
+      body.classList.toggle("dark");
+      const isDark = body.classList.contains("dark");
+      localStorage.setItem(THEME_KEY, isDark ? "dark" : "light");
+      toggleBtn.classList.toggle("fa-sun", !isDark);
+      toggleBtn.classList.toggle("fa-moon", isDark);
+   }
+
+   // ---------- SIDEBAR ----------
+   const menuBtn = document.getElementById("menu-btn");
+   const closeBtn = document.getElementById("close-btn");
+   const sideBar = document.querySelector(".side-bar");
+
+   menuBtn.onclick = () => sideBar.classList.add("active");
+   closeBtn.onclick = () => sideBar.classList.remove("active");
+
+   // ---------- PROFILE ----------
+   const userBtn = document.getElementById("user-btn");
+   const profile = document.querySelector(".header .profile");
+
+   userBtn.onclick = () => profile.classList.toggle("active");
+
+   // ---------- FORM POPUP ----------
+
+//    const form = document.getElementById("contactForm");
+// const popup = document.getElementById("popup");
+
+// form.addEventListener("submit", (e) => {
+//    e.preventDefault();
+//    popup.classList.add("active");
+//    setTimeout(() => popup.classList.remove("active"), 3000); // 3 sec baad band
+//    form.reset();
+// });
+   const form = document.getElementById("contactForm");
+   const popup = document.getElementById("popup");
+
+   form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      popup.classList.add("active");
+      setTimeout(() => popup.classList.remove("active"), 3000);
+      form.reset();
+   });
+
+   // ---------- USER DATA ----------
+   const userJSON = localStorage.getItem("user");
+   if(userJSON){
+      const user = JSON.parse(userJSON);
+
+      const headerName = document.getElementById("headerProfileName");
+      if(headerName) headerName.textContent = user.name;
+
+      const profileName = document.getElementById("profileName");
+      if(profileName) profileName.textContent = user.name;
+
+      const headerEmail = document.getElementById("headerProfileEmail");
+      if(headerEmail) headerEmail.textContent = user.email;
+
+      const profileEmail = document.getElementById("profileEmail");
+      if(profileEmail) profileEmail.textContent = user.email;
+   }
+
+   // Initialize theme
+   applySavedTheme();
+})();
+</script>
+
+
+</body>
+</html>
